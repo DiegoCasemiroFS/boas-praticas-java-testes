@@ -10,6 +10,7 @@ import br.com.alura.adopet.api.repository.PetRepository;
 import br.com.alura.adopet.api.repository.TutorRepository;
 import br.com.alura.adopet.api.validacoes.ValidacaoSolicitacaoAdocao;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
@@ -37,6 +38,9 @@ class AdocaoServiceTest {
     @Mock
     private TutorRepository tutorRepository;
 
+    @Mock
+    private EmailService emailService;
+
     @Spy
     private List<ValidacaoSolicitacaoAdocao> validacoes = new ArrayList<>();
 
@@ -61,7 +65,8 @@ class AdocaoServiceTest {
     private ArgumentCaptor<Adocao> adocaoCaptor;
 
     @Test
-    void deveriaSalvarAdocaoAoSolicitar() {
+    @DisplayName("Deveria salvar adocao ao solicitar")
+    void teste01() {
 
         this.dto = new SolicitacaoAdocaoDto(10L, 20L, "Motivo qualquer");
         given(petRepository.getReferenceById(dto.idPet())).willReturn(pet);
@@ -78,7 +83,8 @@ class AdocaoServiceTest {
     }
 
     @Test
-    void deveriaChamarValidadoresDeAdocaoAoSolicitar() {
+    @DisplayName("Deveria chamar validadores de adocao ao solicitar")
+    void teste02() {
 
         this.dto = new SolicitacaoAdocaoDto(10L, 20L, "Motivo qualquer");
         given(petRepository.getReferenceById(dto.idPet())).willReturn(pet);
