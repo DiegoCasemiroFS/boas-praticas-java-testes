@@ -5,6 +5,7 @@ import br.com.alura.adopet.api.exception.ValidacaoException;
 import br.com.alura.adopet.api.model.Pet;
 import br.com.alura.adopet.api.repository.PetRepository;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.BDDMockito;
@@ -28,7 +29,8 @@ class ValidacaoPetDisponivelTest {
     private SolicitacaoAdocaoDto dto;
 
     @Test
-    void deveriaPermitirSolicitacaoDeAdocaoPet() {
+    @DisplayName("Deveria permitir solicitacao de adocao para pet disponivel")
+    void teste01() {
 
         BDDMockito.given(petRepository.getReferenceById(dto.idPet())).willReturn(pet);
         BDDMockito.given(pet.getAdotado()).willReturn(false);
@@ -37,7 +39,8 @@ class ValidacaoPetDisponivelTest {
     }
 
     @Test
-    void NaoDeveriaPermitirSolicitacaoDeAdocaoPet() {
+    @DisplayName("Nao deveria permitir solicitacao de adocao para pet ja adotado")
+    void teste02() {
 
         BDDMockito.given(petRepository.getReferenceById(dto.idPet())).willReturn(pet);
         BDDMockito.given(pet.getAdotado()).willReturn(true);
