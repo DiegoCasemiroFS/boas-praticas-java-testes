@@ -37,7 +37,7 @@ class CalculadoraProbabilidadeAdocaoTest {
 
     @Test
     @DisplayName("Probabilidade média para gatos idosos com peso baixo")
-    void probabilidadeMediaCenario2() {
+    void probabilidadeMediaCenario1() {
 
         Abrigo abrigo = new Abrigo(new CadastroAbrigoDto(
                 "Abrigo feliz",
